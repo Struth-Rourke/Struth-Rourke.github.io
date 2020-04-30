@@ -4,14 +4,23 @@ title: About Me
 subtitle: What there is to know
 ---
 
-# Big Header
+# Background
+New York
+Rugby
+Medicine - Finance linkage and thesis
+Former PE Data Protection Analyst 
 
-## Smaller Header
 
-### Smallest Header
+# Education
+Penn State
+Finance and Economics
+Lambda School Data Science
+Research
+CFA Level 1
 
-Paragraph Text
 
-[Link to Google.com](http://google.com
+# Aspirations
+Merging Data Science with my existing knowledge of finance and economics
+Research at scale
+Personal Development -- Challenge, beginners mindset, comfortable with uncomfort
 
-![Penguin Image](* insert link*)
