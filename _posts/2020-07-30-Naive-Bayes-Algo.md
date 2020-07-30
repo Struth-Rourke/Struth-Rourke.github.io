@@ -26,6 +26,7 @@ Algorithm).
 
 <img src="/img/bayes-equation.png">
 
+
 # Use Case
 Naive Bayes' Algorithms are so called because they make naive assumptions about the relationships between features,
 datapoints and outcomes. One element that underlies all NBC's is that the assumed value associtaed with a particular feature is 
@@ -44,11 +45,26 @@ the data across various relationships and feature types. They perform best when 
 naive assumptions underlying the model actually match the those in the data; this includes if the features in the data are free 
 of multicollinearity (high correlation between features) and / or the dimensionality (absolute number of features) is high.
 
+
 # How - To
 This section will talk about the mathematics and process that I went through in order to create a Naive Bayes' Classification 
 Algorithm using Numpy.
 
 ## DAY 1
+On the first day of this project, I struggled more than I care to admit. In following with the UPER (Understand, Plan, Execute, 
+Review) methodology, I sought out to understand the mathematics and theory behind Naive Bayesian Algorithms. I was able to get 
+a pretty intuitive understanding of the math after half the day and then sought out to Plan and Execute my code from there. 
+Unfortunately, I neither understood nor planned enough, and so when I went to try and Execute by writing code, I ran into 
+immediate problems. Including: failing to recognize the data type of my input variables, not referencing the correct indices, 
+not using the inherent parameters in my class enough, and many other issues that all stem from not being as organized or 
+systemized as I should've been. I finished the day discouraged and ready to change my project because I was not satisified with 
+my progress and I didn't want to get behind.
+
+Fortunately, tomorrow is always another day.
+
+## DAY 2
+So, on Day 2, I restarted and reframed everything as if I was operating on a blank slate.
+
 First, I needed to understand and look at the probabilistic model that underlies the algorithm. The foundational premise is 
 based on the conditional probability of features (x<sub>1<sub> ,..., x<sub>n<sub>), in relation to each outcome(k) -- 
 probability of k, based on x<sub>1<sub> through x<sub>n<sub>. Using Bayes' Theorum, the conditional probability can be 
@@ -66,48 +82,52 @@ It can be concisely written as:
 
 Second, I needed to make this equation interpretable -- in practice, since we are only interested in the probability in 
 relation to k possible outcomes, we care about the numerator of this equation, since the denominator does not contain k. In the 
-code provided below, you can see how I calculated the prior and likelihood, and then calling them jointly in my fit function.
+code provided below, you can see how I calculated the prior probabilities with a function and then called it in my fit 
+function, jointly with my calculated likelihood function (for more specifics into the code, you can visit my repo named 
+Naive_Bayes_Algo). By the end of the day, I had finished my fit method and had a more defined path for the rest of the project.
 
 ```python
 def calculate_priors(self, X, y):
-  # class_types, count_per_class per each classification outcome type
   class_types, count_per_class = np.unique(y, return_counts=True)
-  # zip the class_types and n_class_types together so it's easier to
-  # reference later when I calculate probilities
   class_type_dist = list(zip(class_types, count_per_class))
-  # find the total number of datapoints, and sum them together
   total_ = [c[1] for c in class_type_dist]
   total = sum(total_)
-  # find the percentage distribution of each class_type -- set the priors 
-  # parameter equal to the percentage of prior occurrences
   self.priors = np.array([c[1] / total for c in class_type_dist])
 
-def calculate_likelihood(self, X, y):
-  # identify the unique number of classification types (class_types)
-  # set parameter class_types equal to them
-  self.class_types = np.unique(y)
-  # identify the number_rows, number_features in the dataset from X
-  n_rows, n_features = X.shape
-  # set parameters mean, variance equal to numpy arrays with zeros
-  self.mean = np.zeros((n_rows, n_features), dtype=np.float64)
-  self.variance = np.zeros((n_rows, n_features), dtype=np.float64)
-  # loop over the different idx and class_type in the class_types parameter
-  for idx_class_type, class_type in enumerate(self.class_types):
-      # set the X datapoints equal to the respective class_type
-      X_classes = X[y == class_type]
-      # calculate the mean of the X datapoints for each feature and set them
-      # equal to the self.mean parameter for the specified idx
-      self.mean[idx_class_type, :] = X_classes.mean(axis=0)
-      # calculate the variance of the X datapoints for each feature and set them
-      # equal to the self.mean parameter for the specified idx
-      self.variance[idx_class_type, :] = X_classes.var(axis=0)
-
-## FIT
 def fit(self, X, y):
-    # calling calculate_priors function
     self.calculate_priors(X, y)
-    # calling calculate_likelihood function
     self.calculate_likelihood(X, y)
 ```
 
-## DAY 2
+## DAY 3
+On the third day, I needed to better understand the process of using likelihood as an input into the probability denisty 
+function (PDF) of a normal distribution. Below is the function that I used to calculate the PDF.
+
+```python
+def prob_density_function(self, mean, variance, x):
+    exponent = np.exp((-(x - mean) ** 2) / (2 * variance))
+    p_x_given_y = 1 / np.sqrt(2 * np.pi * variance) * exponent
+    return p_x_given_y
+
+```
+
+Essentially, the PDF is the probability that a random variable falls within a particular range of values. It is the relative 
+likelihood of that value occuring in relation to another. This is critical to understand because the posterior probabilities 
+that we are calculating later on, as part of the predicted output probability, depend on the probability density function of 
+each likelihood term.
+
+Finally, using the mean, variance, and priors as inputs, I created a function to calculate the posterior probabilities 
+associated with each classification outcome (or type) and returned the classification type with the highest projected 
+probability given the features and their respective values. (For a more in-depth look at the code, you can visit my repo titled
+Naive_Bayes_Algo). This allows for the model to assign an outcome label to a particular observation based on the features used 
+and their values; over time, as more oberservations occur the distribution of outcomes changes, and therefore alters the 
+classification type. Because I created a Gaussian Naive Bayes Classifier, which works best on normal distributions, if the 
+distribution is indeed Gaussian the classification type will more than likely stay the same for a given obeservation regardless 
+of sample size -- since samples approximate the population when they are Gaussian.
+
+## DAY 4
+The fourth and final day has been all about cleaning up, refactoring, polishing off the code and writing this article as a 
+lookback at the entire project. Despite the struggle and difficulties I experienced early on, I'm very happy with the outcome 
+and for sticking with it. It was challenging, but I learned a lot and appreciate the struggle that goes into learning 
+something that is abstract.
+
