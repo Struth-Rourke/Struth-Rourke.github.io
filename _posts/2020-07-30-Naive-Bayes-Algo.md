@@ -50,7 +50,7 @@ of multicollinearity (high correlation between features) and / or the dimensiona
 This section will talk about the mathematics and process that I went through in order to create a Naive Bayes' Classification 
 Algorithm using Numpy.
 
-## DAY 1
+### DAY 1
 On the first day of this project, I struggled more than I care to admit. In following with the UPER (Understand, Plan, Execute, 
 Review) methodology, I sought out to understand the mathematics and theory behind Naive Bayesian Algorithms. I was able to get 
 a pretty intuitive understanding of the math after half the day and then sought out to Plan and Execute my code from there. 
@@ -62,7 +62,7 @@ my progress and I didn't want to get behind.
 
 Fortunately, tomorrow is always another day.
 
-## DAY 2
+### DAY 2
 So, on Day 2, I restarted and reframed everything as if I was operating on a blank slate.
 
 First, I needed to understand and look at the probabilistic model that underlies the algorithm. The foundational premise is 
@@ -99,7 +99,7 @@ def fit(self, X, y):
     self.calculate_likelihood(X, y)
 ```
 
-## DAY 3
+### DAY 3
 On the third day, I needed to better understand the process of using likelihood as an input into the probability denisty 
 function (PDF) of a normal distribution. Below is the function that I used to calculate the PDF.
 
@@ -125,7 +125,7 @@ classification type. Because I created a Gaussian Naive Bayes Classifier, which 
 distribution is indeed Gaussian the classification type will more than likely stay the same for a given obeservation regardless 
 of sample size -- since samples approximate the population when they are Gaussian.
 
-## DAY 4
+### DAY 4
 The fourth and final day has been all about cleaning up, refactoring, polishing off the code and writing this article as a 
 lookback at the entire project. Despite the struggle and difficulties I experienced early on, I'm very happy with the outcome 
 and for sticking with it. It was challenging, but I learned a lot and appreciate the struggle that goes into learning 
