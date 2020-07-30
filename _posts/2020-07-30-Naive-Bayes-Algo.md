@@ -129,5 +129,7 @@ of sample size -- since samples approximate the population when they are Gaussia
 The fourth and final day has been all about cleaning up, refactoring, polishing off the code and writing this article as a 
 lookback at the entire project. Despite the struggle and difficulties I experienced early on, I'm very happy with the outcome 
 and for sticking with it. It was challenging, but I learned a lot and appreciate the struggle that goes into learning 
-something that is abstract.
+something that is abstract. In the end, my model was able to perform as well as, and as accurate as, the SKlearn Naive Bayes, 
+Gaussian Classifier -- which is not so much surprising since they both follow the same math -- but very cool and satisfying 
+nonetheless. For any additional information, you can check my repo or reach out for more about me specifically.
 
