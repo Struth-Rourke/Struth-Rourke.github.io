@@ -66,9 +66,9 @@ Fortunately, tomorrow is always another day.
 So, on Day 2, I restarted and reframed everything as if I was operating on a blank slate.
 
 First, I needed to understand and look at the probabilistic model that underlies the algorithm. The foundational premise is 
-based on the conditional probability of features (x<sub>n<sub>), in relation to each outcome(k) -- probability of k, based on 
-x<sub>1<sub> through x<sub>n<sub>. Using Bayes' Theorum, the conditional probability can be expressed by the form shown in the 
-image above, reproduced here.
+based on the conditional probability of features (x<sub>n</sub>), in relation to each outcome(k) -- probability of k, based on 
+x<sub>1</sub> through x<sub>n</sub>. Using Bayes' Theorum, the conditional probability can be expressed by the form shown in 
+the image above, reproduced here.
 
 <img src="/img/bayes-equation.png">
 
