@@ -49,17 +49,19 @@ This section will talk about the mathematics and process that I went through in 
 Algorithm using Numpy.
 
 First, I needed to understand and look at the probabilistic model that underlies the algorithm. The foundational premise is 
-based on the conditional probability of features (x<sub>1<sub>,...,x<sub>n<sub>), in relation to each outcome(k) -- probability 
-of k, based on x<sub>1<sub> through x<sub>n<sub>. Using Bayes' Theorum, the conditional probability can be expressed by the 
-form shown in the image above, reproduced here.
+based on the conditional probability of features (x<sub>1<sub> ,..., x<sub>n<sub>), in relation to each outcome(k) -- 
+probability of k, based on x<sub>1<sub> through x<sub>n<sub>. Using Bayes' Theorum, the conditional probability can be 
+expressed by the form shown in the image above, reproduced here.
 
 <img src="/img/bayes-equation.png">
 
 It can be concisely written as:
 
-             prior x likelihood
-posterior = --------------------
-                  evidence
+```py
+                 prior x likelihood
+    posterior = --------------------
+                      evidence
+```
 
 Second, I needed to make this equation interpretable -- in practice, since we are only interested in the probability in 
 relation to k possible outcomes, we care about the numerator of this equation, since the denominator does not contain k. In the 
