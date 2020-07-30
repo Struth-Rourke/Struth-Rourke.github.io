@@ -66,7 +66,7 @@ Fortunately, tomorrow is always another day.
 So, on Day 2, I restarted and reframed everything as if I was operating on a blank slate.
 
 First, I needed to understand and look at the probabilistic model that underlies the algorithm. The foundational premise is 
-based on the conditional probability of features (x<sub>n</sub>), in relation to each outcome(k) -- probability of k, based on 
+based on the conditional probability of features (x<sub>n</sub>), in relation to each outcome (k) -- probability of k, based on 
 x<sub>1</sub> through x<sub>n</sub>. Using Bayes' Theorum, the conditional probability can be expressed by the form shown in 
 the image above, reproduced here.
 
@@ -108,7 +108,6 @@ def prob_density_function(self, mean, variance, x):
     exponent = np.exp((-(x - mean) ** 2) / (2 * variance))
     p_x_given_y = 1 / np.sqrt(2 * np.pi * variance) * exponent
     return p_x_given_y
-
 ```
 
 Essentially, the PDF is the probability that a random variable falls within a particular range of values. It is the relative 
